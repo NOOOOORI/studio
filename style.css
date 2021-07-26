@@ -1,0 +1,399 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  /*variables css*/
+  --header-height: 3rem;
+
+  /* colors */
+  --title-color: #161212;
+  --text-color: #5b5757;
+  --accent-color: #ff9900;
+
+  /* font and typograph */
+  --body-font: "Poppins", YuGothic, "Yu Gothic", "Hiragino Kaku Gothic ProN",
+    "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+  --biggest-font: 2rem;
+  --h2-font: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+
+  /* font-weight */
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /* margin */
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*z index*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*base*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+ul,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
+/*class css*/
+.section {
+  padding: 60px 0 2rem;
+}
+
+.contents-subtitle {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-3);
+}
+.section-title {
+  margin-bottom: var(--mb-6);
+}
+.section-title::after {
+  content: attr(data-sub);
+  display: block;
+  font-size: var(--normal-font-size);
+}
+
+.bd-container {
+  max-width: 1024px;
+  width: calc(100% - 3rem);
+  margin-left: var(--mb-3);
+  margin-right: var(--mb-3);
+}
+
+.bd-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid_img {
+  display: grid;
+  grid-gap: 0.5rem;
+}
+
+.grid_img img:first-of-type {
+  grid-column: 1 / 3;
+}
+.grid_img img:last-of-type {
+  grid-column: 2 / 3;
+}
+
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: #fff;
+  box-shadow: 0 1px 1px 0px rgb(0 0 0 / 10%);
+}
+
+/*nav*/
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 2.5rem 0 0;
+    text-align: center;
+    background-color: #fff;
+    transition: 0.4s;
+    box-shadow: 0 0 4px rgb(0 0 0 / 10%);
+    z-index: var(--z-fixed);
+  }
+}
+
+.nav__item {
+  margin-bottom: var(--mb-3);
+}
+
+.nav__link,
+.nav__logo,
+.nav__toggle {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.nav__logo:hover {
+  color: var(--first-color);
+}
+
+.nav__link {
+  transition: 0.3s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/*show menu*/
+.show-menu {
+  top: var(--header-height);
+}
+
+/* scroll top */
+.scrolltop {
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  background: rgb(0 0 0 / 50%);
+  border-radius: 0.4rem;
+  z-index: var(--z-tooltip);
+  transition: 0.4s;
+  visibility: hidden;
+}
+
+.scrolltop:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.scrolltop__icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.show-scroll {
+  visibility: visible;
+  bottom: 1.5rem;
+}
+
+/* home */
+.home__container {
+  row-gap: 0.5rem;
+}
+
+.home__title {
+  font-size: var(--h2-font);
+  font-weight: var(--font-bold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__description,
+.about__description {
+  margin-bottom: var(--mb-3);
+}
+
+/* buttons */
+.button {
+  display: inline-block;
+  border: 1px solid var(--title-color);
+  padding: 1rem 1.5rem;
+  color: var(--title-color);
+  transition: 0.3s;
+  text-align: center;
+  width: 100%;
+  max-width: 180px;
+}
+
+.button:hover {
+  background-color: var(--first-color-alt);
+}
+
+.button-link {
+  background: none;
+  padding: 0;
+  color: var(--first-color);
+}
+
+.button-link:hover {
+  background-color: transparent;
+  color: var(--first-color-alt);
+}
+.swiper-container {
+  margin: 100px 0 0;
+}
+.footer {
+  position: relative;
+}
+.footer-container {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+.footer-container h2,
+.footer-container div p,
+footer small {
+  color: #fff;
+}
+.map-container {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 76.25%;
+  position: relative;
+}
+.map {
+  filter: grayscale(100%) invert(92%) contrast(83%);
+  position: absolute;
+  left: 10%;
+  top: 0;
+  height: 80%;
+  width: 80%;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+
+  .nav__list {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__item {
+    margin-left: var(--mb-5);
+    margin-bottom: 0;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  .bd-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-left {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .grid-right {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .bd-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* モーダルCSS */
+.modalArea {
+  display: none;
+  position: fixed;
+  z-index: 10; /*サイトによってここの数値は調整 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalBg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,0.9);
+}
+
+.modalWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 70%;
+  max-width: 500px;
+  padding: 10px 30px;
+  background-color: #fff;
+  height : 50%; 
+  overflow : auto;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+
+/* 以下ボタンスタイル */
+button {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #282828;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 180px;
+}
+
+#openModal {
+  
+  top: 50%;
+  left: 50%;
+}
